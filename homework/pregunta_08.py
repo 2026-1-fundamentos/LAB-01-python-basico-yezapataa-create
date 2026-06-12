@@ -27,3 +27,27 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    letras_por_valor = {}
+
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for linea in file:
+            columnas = linea.split()
+            if len(columnas) >= 2:
+                letra = columnas[0]
+                valor = int(columnas[1])
+                
+                if valor in letras_por_valor:
+                    letras_por_valor[valor].add(letra)
+                else:
+                    letras_por_valor[valor] = {letra}
+
+    resultado = []
+    for valor in sorted(letras_por_valor.keys()):
+        letras_ordenadas = sorted(list(letras_por_valor[valor]))
+        resultado.append((valor, letras_ordenadas))
+
+    return resultado
+
+
+if __name__ == "__main__":
+    print(pregunta_08())

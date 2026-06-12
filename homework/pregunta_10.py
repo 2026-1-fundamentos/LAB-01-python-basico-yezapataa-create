@@ -20,3 +20,22 @@ def pregunta_10():
 
 
     """
+    resultado = []
+
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for linea in file:
+            columnas = linea.split()
+            if len(columnas) >= 5:
+                letra = columnas[0]
+                
+                cantidad_col_4 = len(columnas[3].split(","))
+                
+                cantidad_col_5 = len(columnas[4].split(","))
+                
+                resultado.append((letra, cantidad_col_4, cantidad_col_5))
+
+    return resultado
+
+
+if __name__ == "__main__":
+    print(pregunta_10())

@@ -14,3 +14,13 @@ def pregunta_01():
     214
 
     """
+    suma_columna_2 = 0
+
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for linea in file:
+            columnas = linea.split()
+            if columnas:
+                suma_columna_2 += int(columnas[1])
+
+    return suma_columna_2
+print(pregunta_01())
